@@ -442,7 +442,7 @@ if __name__ == '__main__':
     if args.model=="convnet":
         model_select = models.ConvNetNoDropout(10, base_hid=args.inter_dim)
     else:
-        model_select = models.FNNet(28 * 28, args.inter_dim, 10)
+        model_select = models.FNNet(512, args.inter_dim, 10)
         model_select.eval()
     print(model_select)
     a =next(iter(full_train_loader2))
@@ -450,7 +450,7 @@ if __name__ == '__main__':
     X, Y, _ = next(iter(full_train_loader2))
     if args.random:
         subnet = torch.zeros_like(X[0])
-        subnet_indices = np.random.choice(list(range(28*28)), args.coreset_size, replace=False)
+        subnet_indices = np.random.choice(list(range(512)), args.coreset_size, replace=False)
         subnet.flatten()[subnet_indices] = 1
         subnet = subnet
     else:
