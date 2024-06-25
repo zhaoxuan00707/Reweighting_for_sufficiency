@@ -472,7 +472,7 @@ if __name__ == '__main__':
         if args.model=="convnet":
             model_train = models.ConvNet(10)
         else:
-            model_train = models.FNNet(28 * 28, 100, 10)
+            model_train = models.FNNet(512, 100, 10)
         optimizer = torch.optim.Adam(model_train.parameters(), lr = 5e-3)
         best_acc1, best_acc5, best_acc1_m, best_acc5_m, best_train_acc1, best_train_acc5 = 0, 0, 0, 0, 0 ,0
         data, target = X, Y
